@@ -14,7 +14,7 @@ code that calls the CKAN API.  For example, using the CKAN API your app can:
 
 * Get JSON-formatted lists of a site's datasets, groups or other CKAN objects:
 
-  http://demo.ckan.org/api/3/action/package_list
+  http://data.boston.gov/api/3/action/package_list
 
   http://demo.ckan.org/api/3/action/group_list
 
