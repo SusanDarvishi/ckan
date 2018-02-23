@@ -16,29 +16,29 @@ code that calls the CKAN API.  For example, using the CKAN API your app can:
 
   http://data.boston.gov/api/3/action/package_list
 
-  http://demo.ckan.org/api/3/action/group_list
+  http://boston.ckan.org/api/3/action/group_list
 
-  http://demo.ckan.org/api/3/action/tag_list
+  http://boston.ckan.org/api/3/action/tag_list
 
 * Get a full JSON representation of a dataset, resource or other object:
 
-  http://demo.ckan.org/api/3/action/package_show?id=adur_district_spending
+  http://boston.ckan.org/api/3/action/package_show?id=adur_district_spending
 
-  http://demo.ckan.org/api/3/action/tag_show?id=gold
+  http://boston.ckan.org/api/3/action/tag_show?id=gold
 
-  http://demo.ckan.org/api/3/action/group_show?id=data-explorer
+  http://boston.ckan.org/api/3/action/group_show?id=data-explorer
 
 * Search for packages or resources matching a query:
 
-  http://demo.ckan.org/api/3/action/package_search?q=spending
+  http://boston.ckan.org/api/3/action/package_search?q=spending
 
-  http://demo.ckan.org/api/3/action/resource_search?query=name:District%20Names
+  http://boston.ckan.org/api/3/action/resource_search?query=name:District%20Names
 
 * Create, update and delete datasets, resources and other objects
 
 * Get an activity stream of recently changed datasets on a site:
 
-  http://demo.ckan.org/api/3/action/recently_changed_packages_activity_list
+  http://boston.ckan.org/api/3/action/recently_changed_packages_activity_list
 
 .. note::
 
@@ -75,11 +75,11 @@ JSON dictionary. CKAN will also return its response in a JSON dictionary.
 
 One way to post a JSON dictionary to a URL is using the command-line HTTP
 client `HTTPie <http://httpie.org/>`_.  For example, to get a list of the names
-of all the datasets in the ``data-explorer`` group on demo.ckan.org, install
+of all the datasets in the ``data-explorer`` group on boston.ckan.org, install
 HTTPie and then call the ``group_list`` API function by running this command
 in a terminal::
 
-    http http://demo.ckan.org/api/3/action/group_list
+    http http://boston.ckan.org/api/3/action/group_list
 
 The response from CKAN will look like this::
 
@@ -145,7 +145,7 @@ with this Python code::
     import pprint
 
     # Make the HTTP request.
-    response = urllib2.urlopen('http://demo.ckan.org/api/3/action/group_list',
+    response = urllib2.urlopen('http://boston.ckan.org/api/3/action/group_list',
             data_string)
     assert response.code == 200
 
@@ -222,12 +222,12 @@ API versions
 The CKAN APIs are versioned. If you make a request to an API URL without a
 version number, CKAN will choose the latest version of the API::
 
-    http://demo.ckan.org/api/action/package_list
+    http://boston.ckan.org/api/action/package_list
 
 Alternatively, you can specify the desired API version number in the URL that
 you request::
 
-    http://demo.ckan.org/api/3/action/package_list
+    http://boston.ckan.org/api/3/action/package_list
 
 Version 3 is currently the only version of the Action API.
 
@@ -262,16 +262,16 @@ can be configured with the ``apikey_header_name`` option in your CKAN
 configuration file.)
 
 For example, to ask whether or not you're currently following the user
-``markw`` on demo.ckan.org using HTTPie, run this command::
+``markw`` on boston.ckan.org using HTTPie, run this command::
 
-    http http://demo.ckan.org/api/3/action/am_following_user id=markw Authorization:XXX
+    http http://boston.ckan.org/api/3/action/am_following_user id=markw Authorization:XXX
 
 (Replacing ``XXX`` with your API key.)
 
-Or, to get the list of activities from your user dashboard on demo.ckan.org,
+Or, to get the list of activities from your user dashboard on boston.ckan.org,
 run this Python code::
 
-    request = urllib2.Request('http://demo.ckan.org/api/3/action/dashboard_activity_list')
+    request = urllib2.Request('http://boston.ckan.org/api/3/action/dashboard_activity_list')
     request.add_header('Authorization', 'XXX')
     response_dict = json.loads(urllib2.urlopen(request, '{}').read())
 
@@ -282,14 +282,14 @@ GET-able API functions
 
 Functions defined in `ckan.logic.action.get`_ can also be called with an HTTP
 GET request.  For example, to get the list of datasets (packages) from
-demo.ckan.org, open this URL in your browser:
+boston.ckan.org, open this URL in your browser:
 
-http://demo.ckan.org/api/3/action/package_list
+http://boston.ckan.org/api/3/action/package_list
 
 Or, to search for datasets (packages) matching the search query ``spending``,
-on demo.ckan.org, open this URL in your browser:
+on boston.ckan.org, open this URL in your browser:
 
-http://demo.ckan.org/api/3/action/package_search?q=spending
+http://boston.ckan.org/api/3/action/package_search?q=spending
 
 .. tip::
 
@@ -301,12 +301,12 @@ The search query is given as a URL parameter ``?q=spending``. Multiple
 URL parameters can be appended, separated by ``&`` characters, for example
 to get only the first 10 matching datasets open this URL:
 
-http://demo.ckan.org/api/3/action/package_search?q=spending&rows=10
+http://boston.ckan.org/api/3/action/package_search?q=spending&rows=10
 
 When an action requires a list of strings as the value of a parameter, the
 value can be sent by giving the parameter multiple times in the URL:
 
-http://demo.ckan.org/api/3/action/term_translation_show?terms=russian&terms=romantic%20novel
+http://boston.ckan.org/api/3/action/term_translation_show?terms=russian&terms=romantic%20novel
 
 
 -------------
@@ -317,7 +317,7 @@ To cater for scripts from other sites that wish to access the API, the data can
 be returned in JSONP format, where the JSON data is 'padded' with a function
 call. The function is named in the 'callback' parameter. For example:
 
-http://demo.ckan.org/api/3/action/package_show?id=adur_district_spending&callback=myfunction
+http://boston.ckan.org/api/3/action/package_show?id=adur_district_spending&callback=myfunction
 
 .. note :: This only works for GET requests
 
@@ -334,30 +334,30 @@ Tags (not in a vocabulary)
 
 A list of all tags:
 
-* browser: http://demo.ckan.org/api/3/action/tag_list
-* curl: ``curl http://demo.ckan.org/api/3/action/tag_list``
-* ckanapi: ``ckanapi -r http://demo.ckan.org action tag_list``
+* browser: http://boston.ckan.org/api/3/action/tag_list
+* curl: ``curl http://boston.ckan.org/api/3/action/tag_list``
+* ckanapi: ``ckanapi -r http://boston.ckan.org action tag_list``
 
 Top 10 tags used by datasets:
 
-* browser: http://demo.ckan.org/api/action/package_search?facet.field=[%22tags%22]&facet.limit=10&rows=0
-* curl: ``curl 'http://demo.ckan.org/api/action/package_search?facet.field=\["tags"\]&facet.limit=10&rows=0'``
-* ckanapi: ``ckanapi -r http://demo.ckan.org action package_search facet.field='["tags"]' facet.limit=10 rows=0``
+* browser: http://boston.ckan.org/api/action/package_search?facet.field=[%22tags%22]&facet.limit=10&rows=0
+* curl: ``curl 'http://boston.ckan.org/api/action/package_search?facet.field=\["tags"\]&facet.limit=10&rows=0'``
+* ckanapi: ``ckanapi -r http://boston.ckan.org action package_search facet.field='["tags"]' facet.limit=10 rows=0``
 
 All datasets that have tag 'economy':
 
-* browser: http://demo.ckan.org/api/3/action/package_search?fq=tags:economy
-* curl: ``curl 'http://demo.ckan.org/api/3/action/package_search?fq=tags:economy'``
-* ckanapi: ``ckanapi -r http://demo.ckan.org action package_search fq='tags:economy'``
+* browser: http://boston.ckan.org/api/3/action/package_search?fq=tags:economy
+* curl: ``curl 'http://boston.ckan.org/api/3/action/package_search?fq=tags:economy'``
+* ckanapi: ``ckanapi -r http://boston.ckan.org action package_search fq='tags:economy'``
 
 Tag Vocabularies
 ================
 
 Top 10 tags and vocabulary tags used by datasets:
 
-* browser: http://demo.ckan.org/api/action/package_search?facet.field=[%22tags%22]&facet.limit=10&rows=0
-* curl: ``curl 'http://demo.ckan.org/api/action/package_search?facet.field=\["tags"\]&facet.limit=10&rows=0'``
-* ckanapi: ``ckanapi -r http://demo.ckan.org action package_search facet.field='["tags"]' facet.limit=10 rows=0``
+* browser: http://boston.ckan.org/api/action/package_search?facet.field=[%22tags%22]&facet.limit=10&rows=0
+* curl: ``curl 'http://boston.ckan.org/api/action/package_search?facet.field=\["tags"\]&facet.limit=10&rows=0'``
+* ckanapi: ``ckanapi -r http://boston.ckan.org action package_search facet.field='["tags"]' facet.limit=10 rows=0``
 
 e.g. Facet: `vocab_Topics` means there is a vocabulary called Topics, and its top tags are listed under it.
 
@@ -376,7 +376,7 @@ You can use the ``upload`` parameter of the
 new version of a resource file. This requires a ``multipart/form-data``
 request, with httpie you can do this using the ``@file.csv``::
 
-    http --json POST http://demo.ckan.org/api/3/action/resource_update id=<resource id> upload=@updated_file.csv Authorization:<api key>
+    http --json POST http://boston.ckan.org/api/3/action/resource_update id=<resource id> upload=@updated_file.csv Authorization:<api key>
 
 
 .. _api-reference:

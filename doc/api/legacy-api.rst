@@ -20,19 +20,19 @@ exception, tag names are immutable so tags are always referred to with their
 name.
 
 You can specify which version of the API to use in the URL. For example,
-opening this URL in your web browser will list demo.ckan.org's datasets using
+opening this URL in your web browser will list boston.ckan.org's datasets using
 API version 1:
 
-http://demo.ckan.org/api/1/rest/dataset
+http://boston.ckan.org/api/1/rest/dataset
 
 Opening this URL calls the same function using API version 2:
 
-http://demo.ckan.org/api/2/rest/dataset
+http://boston.ckan.org/api/2/rest/dataset
 
 If no version number is given in the URL then the API defaults to version 1, so
 this URL will list the site's datasets using API version 1:
 
-http://demo.ckan.org/api/rest/dataset
+http://boston.ckan.org/api/rest/dataset
 
 Dataset names can change, so to reliably refer to the same dataset over time,
 you will want to use the dataset's ID and therefore use API v2. Alternatively,
